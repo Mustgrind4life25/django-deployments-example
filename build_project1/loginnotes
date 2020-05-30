@@ -1,0 +1,31 @@
+how to setup my project to allow user who are connected to the database to login and logout:
+
+the process involves:
+-setting up login views
+- using built-in decorators for access
+- adding the login_url in settings 
+- creating the login.html
+- editing urls.py file
+
+- open the settings file scroll to the bottom where the static url is located and type in:
+LOGIN_URL = 'the templates path/name of the html file'
+
+- go to the templates and create your login.html file
+- add the extention to it from the base html
+- code: {% extends buildapp/base.html %}
+- add the body block tags so everything from base inside of the body block tags
+- code: {% block body_block %}
+		{% endblock %}
+
+- go to the views.py file
+- this is where the logic for everything for the login page is going to go
+- we need to import a few of django built in functions 
+- code to import:
+from django.contrib.auth import authenticate,login,logout
+from django.http import HttpResponseRedirect, HttpResponse
+from django.urls import reverse # use django.urls import reverse 
+from django.contrib.auth.decorators import login_required 
+
+- dont call a view on of the import names django will get confused and mess up your project
+
+- go to your urls add a url for logout page 
